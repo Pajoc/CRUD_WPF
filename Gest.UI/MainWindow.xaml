@@ -4,9 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gest.UI"
+        xmlns:view="clr-namespace:Gest.UI.View"
+        xmlns:viewModel="clr-namespace:Gest.UI.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Gest" Height="700" Width="1000">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:SupplierDetailViewModel}">
+            <view:SupplierDetailView/>
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="2" FontSize="20">
+            <MenuItem Header="Files">
+                <MenuItem Header="Suppliers" Command="{Binding CreateNewDetailCommand}"
+                          />
+                <MenuItem Header="Suppliers Type" Command="{Binding CreateNewDetailCommand}"
+                          />
+            </MenuItem>
+            <MenuItem Header="Manage">
+                <MenuItem Header="Invoices" Command="{Binding OpenSingleDetailViewCommand}"
+                          />
+            </MenuItem>
+
+        </Menu>
+
+        <view:SupplierDetailView Grid.Row="1" DataContext="{Binding SupplierDetailViewModel}"/>
+
     </Grid>
 </Window>
