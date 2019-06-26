@@ -1,13 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Gest.Model;
+using Gest.UI.Data;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Gest.UI.ViewModel
 {
-    public class MainViewModel
+    public class MainViewModel: ViewModelBase
     {
-        
+        private ISupplierDataService _supplierDataService;
+        private Supplier _selectedSupplier;
+
+        public MainViewModel(ISupplierDataService supplierDataService )
+        {
+            Suppliers = new ObservableCollection<Supplier>();
+            _supplierDataService = supplierDataService;
+           // ShowSuppliersViewCommand = new DelegateCommand(OnClickSuppliers);
+        }
+
+        public void Load()
+        {
+            var suppliers = _supplierDataService.GetAll();
+
+            Suppliers.Clear();
+
+            foreach (var supplier in suppliers)
+            {
+                Suppliers.Add(supplier);
+            }
+        }
+
+        public ObservableCollection<Supplier> Suppliers { get; set; }
+
+        public ICommand ShowSuppliersViewCommand { get; }
+
+        public Supplier SelectedSupplier
+        {
+            get { return _selectedSupplier; }
+            set {
+                _selectedSupplier = value;
+                OnPropertyChanged();
+            }
+        }
+
+                
     }
 }

@@ -55,8 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\ISupplierDataService.cs" />
+    <Compile Include="Data\SupplierDataService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SupplierDetailViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\SupplierDetailView.xaml.cs">
       <DependentUpon>SupplierDetailView.xaml</DependentUpon>
     </Compile>
@@ -104,13 +107,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gest.DataAccess\Gest.DataAccess.csproj">
+      <Project>{f6d29b6a-fc27-4049-87d2-b2b03339b6d5}</Project>
+      <Name>Gest.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gest.Model\Gest.Model.csproj">
       <Project>{220bd5b8-6a05-4370-9338-bf5348159981}</Project>
       <Name>Gest.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
