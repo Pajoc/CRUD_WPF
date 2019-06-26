@@ -1,5 +1,7 @@
 ﻿using Gest.Model;
 using Gest.UI.Data;
+using Prism.Commands;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -14,7 +16,12 @@ namespace Gest.UI.ViewModel
         {
             Suppliers = new ObservableCollection<Supplier>();
             _supplierDataService = supplierDataService;
-           // ShowSuppliersViewCommand = new DelegateCommand(OnClickSuppliers);
+            ShowSuppliersViewCommand = new DelegateCommand(OnClickSuppliers);
+        }
+
+        private void OnClickSuppliers()
+        {
+            var x = 1;
         }
 
         public void Load()
