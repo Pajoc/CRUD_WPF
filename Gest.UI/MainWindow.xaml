@@ -4,42 +4,58 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gest.UI"
-        xmlns:view="clr-namespace:Gest.UI.View"
-        xmlns:viewModel="clr-namespace:Gest.UI.ViewModel"
-        
+       xmlns:View="clr-namespace:Gest.UI.View"
+        xmlns:ViewModel="clr-namespace:Gest.UI.ViewModel"
         mc:Ignorable="d"
         Title="Gest" Height="700" Width="1000">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type viewModel:MainViewModel}">
-            <view:SupplierDetailView/>
+        
+        <DataTemplate DataType="{x:Type ViewModel:SupplierViewModel}">
+            <View:SuppliersView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:BlueViewModel}">
+            <View:BlueView DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
-    <!--https://www.youtube.com/watch?v=xUwk2-_tRzo-->
+
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="200"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Menu Grid.ColumnSpan="2" FontSize="20">
+        <Menu Grid.ColumnSpan="5" FontSize="18">
             <MenuItem Header="Files">
-                <MenuItem Header="Suppliers" Command="{Binding ShowSuppliersViewCommand}"
-                          CommandParameter="{x:Type viewModel:MainViewModel}"
-                          />
-                
-                <!--<MenuItem Header="Suppliers Type" Command="{Binding ShowSuppliersViewCommand}"
-                          />-->
+                <!--Command="{Binding OnClickSuppliers}"-->
+                <MenuItem Header="Suppliers" Click="SuppliersViewClicked"/>
+                <MenuItem Header="Suppliers Types" Click="BlueViewClicked"/>
             </MenuItem>
             <MenuItem Header="Manage">
                 <MenuItem Header="Invoices" Command="{Binding OpenSingleDetailViewCommand}"
                           />
             </MenuItem>
-
         </Menu>
 
-        <!--<view:SupplierDetailView Grid.Row="1" DataContext="{Binding MainViewModel}"/>-->
+        <DockPanel Background="Gray" Grid.Row="1" Grid.RowSpan="5">
+            <StackPanel>
+                <Button Content="Suppliers" Click="SuppliersViewClicked"/>
+                <Button Content="Blue View" Click="BlueViewClicked"/>
+            </StackPanel>
+        </DockPanel>
+
+        <ContentControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}"/>
+
 
     </Grid>
 </Window>

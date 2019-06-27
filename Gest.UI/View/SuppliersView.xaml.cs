@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Gest.UI.View
 {
     /// <summary>
-    /// Interaction logic for SupplierDetailView.xaml
+    /// Interaction logic for SuppliersView.xaml
     /// </summary>
-    public partial class SupplierDetailView : UserControl
+    public partial class SuppliersView : UserControl
     {
-        public SupplierDetailView()
+        public SuppliersView()
         {
             InitializeComponent();
         }

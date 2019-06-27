@@ -1,4 +1,5 @@
-﻿using Gest.UI.ViewModel;
+﻿using Gest.UI.Data;
+using Gest.UI.ViewModel;
 using System;
 using System.Windows;
 
@@ -9,19 +10,25 @@ namespace Gest.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainViewModel _viewModel;
+        private SupplierViewModel _supplierViewModel;
 
-        public MainWindow(MainViewModel viewModel)
+        
+        public MainWindow()
         {
             InitializeComponent();
-            _viewModel = viewModel;
-            DataContext = _viewModel;
-            Loaded += MainWindows_Loaded;
         }
 
-        private void MainWindows_Loaded(object sender, RoutedEventArgs e)
+        private void SuppliersViewClicked(object sender, RoutedEventArgs e)
         {
-            _viewModel.Load();
+            SupplierDataService supplierDataService = new SupplierDataService();
+            _supplierViewModel = new SupplierViewModel(supplierDataService);
+            _supplierViewModel.Load();
+            DataContext = _supplierViewModel;
+        }
+
+        private void BlueViewClicked(object sender, RoutedEventArgs e)
+        {
+            DataContext = new BlueViewModel();
         }
     }
 }

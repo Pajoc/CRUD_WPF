@@ -9,45 +9,45 @@ namespace Gest.UI.ViewModel
 {
     public class MainViewModel: ViewModelBase
     {
-        private ISupplierDataService _supplierDataService;
-        private Supplier _selectedSupplier;
+        //private ISupplierDataService _supplierDataService;
+        //private Supplier _selectedSupplier;
 
-        public MainViewModel(ISupplierDataService supplierDataService )
-        {
-            Suppliers = new ObservableCollection<Supplier>();
-            _supplierDataService = supplierDataService;
-            ShowSuppliersViewCommand = new DelegateCommand(OnClickSuppliers);
-        }
+        //public MainViewModel(ISupplierDataService supplierDataService )
+        //{
+        //    Suppliers = new ObservableCollection<Supplier>();
+        //    _supplierDataService = supplierDataService;
+        //    ShowSuppliersViewCommand = new DelegateCommand(OnClickSuppliers);
+        //}
 
-        private void OnClickSuppliers()
-        {
-            var x = 1;
-        }
+        //private void OnClickSuppliers()
+        //{
+        //    var x = 1;
+        //}
 
-        public void Load()
-        {
-            var suppliers = _supplierDataService.GetAll();
+        //public void Load()
+        //{
+        //    var suppliers = _supplierDataService.GetAll();
 
-            Suppliers.Clear();
+        //    Suppliers.Clear();
 
-            foreach (var supplier in suppliers)
-            {
-                Suppliers.Add(supplier);
-            }
-        }
+        //    foreach (var supplier in suppliers)
+        //    {
+        //        Suppliers.Add(supplier);
+        //    }
+        //}
 
-        public ObservableCollection<Supplier> Suppliers { get; set; }
+        //public ObservableCollection<Supplier> Suppliers { get; set; }
 
-        public ICommand ShowSuppliersViewCommand { get; }
+        //public ICommand ShowSuppliersViewCommand { get; }
 
-        public Supplier SelectedSupplier
-        {
-            get { return _selectedSupplier; }
-            set {
-                _selectedSupplier = value;
-                OnPropertyChanged();
-            }
-        }
+        //public Supplier SelectedSupplier
+        //{
+        //    get { return _selectedSupplier; }
+        //    set {
+        //        _selectedSupplier = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
                 
     }
