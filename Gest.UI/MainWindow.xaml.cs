@@ -1,5 +1,6 @@
 ﻿using Gest.UI.Data;
 using Gest.UI.ViewModel;
+using MahApps.Metro.Controls;
 using System;
 using System.Windows;
 
@@ -8,7 +9,7 @@ namespace Gest.UI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         private SupplierViewModel _supplierViewModel;
 

@@ -1,8 +1,9 @@
-﻿<Window x:Class="Gest.UI.MainWindow"
+﻿<Controls:MetroWindow x:Class="Gest.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:Gest.UI"
        xmlns:View="clr-namespace:Gest.UI.View"
         xmlns:ViewModel="clr-namespace:Gest.UI.ViewModel"
@@ -49,8 +50,9 @@
 
         <DockPanel Background="Gray" Grid.Row="1" Grid.RowSpan="5">
             <StackPanel>
-                <Button Content="Suppliers" Click="SuppliersViewClicked"/>
-                <Button Content="Blue View" Click="BlueViewClicked"/>
+                <Button  Visibility="Collapsed"/>
+                <Button Content="Blue View" Click="BlueViewClicked" Margin="2"/>
+                <Button Content="Suppliers" Click="SuppliersViewClicked" Margin="2"/>
             </StackPanel>
         </DockPanel>
 
@@ -58,4 +60,4 @@
 
 
     </Grid>
-</Window>
+</Controls:MetroWindow>
