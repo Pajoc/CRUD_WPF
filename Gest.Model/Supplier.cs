@@ -17,6 +17,8 @@ namespace Gest.Model
         [EmailAddress]
         public string MainEmail { get; set; }
 
+        public bool? IsActive { get; set; }
+
         public int? TypeOfSupplierId { get; set; }
 
         public SupplierType TypeOfSupplier { get; set; }

@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -17,11 +17,39 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Label Content="List of subcontractors"/>
-        <DataGrid Grid.Row="1" 
+        <DataGrid Grid.Row="1" Height="Auto"
                   ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSupplier,Mode=TwoWay}"
-                  AutoGenerateColumns="True" RowHeaderWidth="0" Margin="10">
+                  AutoGenerateColumns="False" RowHeaderWidth="0" Margin="10" AlternatingRowBackground="LightGray" IsReadOnly="True">
             <DataGrid.Columns>
-
+                <!--ID-->
+                <DataGridTextColumn Header="Id" Width="*" Visibility="Hidden"
+                    ElementStyle="{StaticResource DataGridColumnStyle}"
+                    EditingElementStyle="{StaticResource DataGridEditingColumnStyle}"
+                    Binding="{Binding Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--Code-->
+                <DataGridTextColumn Header="Trig" Width="*" 
+                    ElementStyle="{StaticResource DataGridColumnStyle}"
+                    EditingElementStyle="{StaticResource DataGridEditingColumnStyle}"
+                    Binding="{Binding Code, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--Name-->
+                <DataGridTextColumn Header="Name" Width="*" 
+                    ElementStyle="{StaticResource DataGridColumnStyle}"
+                    EditingElementStyle="{StaticResource DataGridEditingColumnStyle}"
+                    Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--Treshold-->
+                <DataGridTextColumn Header="Treshold" Width="*" 
+                    ElementStyle="{StaticResource DataGridColumnStyle}"
+                    EditingElementStyle="{StaticResource DataGridEditingColumnStyle}"
+                    Binding="{Binding Treshold, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--IsActive -->
+                <DataGridCheckBoxColumn Header="Active" Width="*" IsThreeState="True"
+                    Binding="{Binding IsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--Sub. Type-->
+                <DataGridTextColumn Header="Sub. Type" Width="*" 
+                    ElementStyle="{StaticResource DataGridColumnStyle}"
+                    EditingElementStyle="{StaticResource DataGridEditingColumnStyle}"
+                    Binding="{Binding TypeOfSupplier.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="0 5 5 5">
