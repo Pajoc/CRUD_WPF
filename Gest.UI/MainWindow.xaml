@@ -51,8 +51,8 @@
         <DockPanel Background="Gray" Grid.Row="1" Grid.RowSpan="5">
             <StackPanel>
                 <Button  Visibility="Collapsed"/>
-                <Button Content="Manage PO's" Click="BlueViewClicked" Margin="2"/>
-                <Button Content="Suppliers" Click="SuppliersViewClicked" Margin="2"/>
+                <Button Content="Manage PO's" Click="BlueViewClicked" Margin="4 4 4 4"/>
+                <Button Content="Suppliers" Click="SuppliersViewClicked" Margin="4 0 4 4"/>
                 
                 
             </StackPanel>
