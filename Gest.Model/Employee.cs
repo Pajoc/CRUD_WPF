@@ -2,7 +2,7 @@
 
 namespace Gest.Model
 {
-    public class Supplier
+    public class Employee
     {
         public int Id { get; set; }
 
@@ -19,8 +19,8 @@ namespace Gest.Model
 
         public bool? IsActive { get; set; }
 
-        public int? TypeOfSupplierId { get; set; }
+        public int? DepartmentId { get; set; }
 
-        public SupplierType TypeOfSupplier { get; set; }
+        public Department DepartmentOfEmployee { get; set; }
     }
 }

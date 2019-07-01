@@ -70,16 +70,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\ISupplierDataService.cs" />
-    <Compile Include="Data\SupplierDataService.cs" />
+    <Compile Include="Data\Lookups\IDepartmentLookupDataService.cs" />
+    <Compile Include="Data\Lookups\LookupDataService.cs" />
+    <Compile Include="Data\EmployeeDataService.cs" />
     <Compile Include="ViewModel\BlueViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\SupplierViewModel.cs" />
+    <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\BlueView.xaml.cs">
       <DependentUpon>BlueView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SuppliersView.xaml.cs">
-      <DependentUpon>SuppliersView.xaml</DependentUpon>
+    <Compile Include="View\EmployeeView.xaml.cs">
+      <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -97,7 +99,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SuppliersView.xaml">
+    <Page Include="View\EmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

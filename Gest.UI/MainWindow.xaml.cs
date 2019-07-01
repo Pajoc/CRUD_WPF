@@ -1,4 +1,5 @@
 ﻿using Gest.UI.Data;
+using Gest.UI.Data.Lookups;
 using Gest.UI.ViewModel;
 using MahApps.Metro.Controls;
 using System;
@@ -11,7 +12,7 @@ namespace Gest.UI
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private SupplierViewModel _supplierViewModel;
+        private EmployeeViewModel _supplierViewModel;
 
         
         public MainWindow()
@@ -19,10 +20,11 @@ namespace Gest.UI
             InitializeComponent();
         }
 
-        private void SuppliersViewClicked(object sender, RoutedEventArgs e)
+        private void EmployeeViewClicked(object sender, RoutedEventArgs e)
         {
-            SupplierDataService supplierDataService = new SupplierDataService();
-            _supplierViewModel = new SupplierViewModel(supplierDataService);
+            EmployeeDataService supplierDataService = new EmployeeDataService();
+            LookupDataService lookupDataService = new LookupDataService();
+            _supplierViewModel = new EmployeeViewModel(supplierDataService, lookupDataService);
             _supplierViewModel.Load();
             DataContext = _supplierViewModel;
         }

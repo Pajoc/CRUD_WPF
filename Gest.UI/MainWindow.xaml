@@ -10,8 +10,8 @@
         mc:Ignorable="d"
         Title="Gest" Height="700" Width="1000">
     <Window.Resources>
-        
-        <DataTemplate DataType="{x:Type ViewModel:SupplierViewModel}">
+
+        <DataTemplate DataType="{x:Type ViewModel:EmployeeViewModel}">
             <View:SuppliersView DataContext="{Binding}"/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModel:BlueViewModel}">
@@ -39,7 +39,7 @@
         <Menu Grid.ColumnSpan="5" FontSize="18">
             <MenuItem Header="Files">
                 <!--Command="{Binding OnClickSuppliers}"-->
-                <MenuItem Header="Suppliers" Click="SuppliersViewClicked"/>
+                <MenuItem Header="Suppliers" Click="EmployeeViewClicked"/>
                 <MenuItem Header="Suppliers Types" Click="BlueViewClicked"/>
             </MenuItem>
             <MenuItem Header="Manage">
@@ -51,8 +51,8 @@
         <DockPanel Background="Gray" Grid.Row="1" Grid.RowSpan="5">
             <StackPanel>
                 <Button  Visibility="Collapsed"/>
-                <Button Content="Manage PO's" Click="BlueViewClicked" Margin="4 4 4 4"/>
-                <Button Content="Suppliers" Click="SuppliersViewClicked" Margin="4 0 4 4"/>
+                <Button Content="Expenses" Click="BlueViewClicked" Margin="2 4 4 4"/>
+                <Button Content="Employees" Click="EmployeeViewClicked" Margin="2 0 4 4"/>
                 
                 
             </StackPanel>

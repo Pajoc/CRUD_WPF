@@ -10,7 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <!-- Accent and AppTheme setting -->
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Cobalt.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
                 <ResourceDictionary>
                     <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
                         <Setter Property="FontSize" Value="14"/>
@@ -19,7 +19,8 @@
                         <Setter Property="FontSize" Value="20"/>
                     </Style>
                     <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
-                        <Setter Property="Foreground" Value="#CCCCCC"/>
+                        <Setter Property="Foreground" Value="DarkGray"/>
+                        <Setter Property="FontSize" Value="18"/>
                     </Style>
 
                     <Style TargetType="DataGrid" BasedOn="{StaticResource {x:Type DataGrid}}">

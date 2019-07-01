@@ -3,8 +3,8 @@ using Gest.Model;
 
 namespace Gest.UI.Data
 {
-    public interface ISupplierDataService
+    public interface IEmployeeDataService
     {
-        IEnumerable<Supplier> GetAll();
+        IEnumerable<Employee> GetAll();
     }
 }
