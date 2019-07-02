@@ -1,4 +1,6 @@
-﻿using Gest.UI.Data;
+﻿using Gest.DataAccess;
+using Gest.Model;
+using Gest.UI.Data;
 using Gest.UI.Data.Lookups;
 using Gest.UI.ViewModel;
 using MahApps.Metro.Controls;
@@ -23,7 +25,8 @@ namespace Gest.UI
         private void EmployeeViewClicked(object sender, RoutedEventArgs e)
         {
             EmployeeDataService supplierDataService = new EmployeeDataService();
-            LookupDataService lookupDataService = new LookupDataService();
+            WebServiceDataAccess<Department> webServiceDataAccess = new WebServiceDataAccess<Department>();
+            LookupDataService lookupDataService = new LookupDataService(webServiceDataAccess);
             _supplierViewModel = new EmployeeViewModel(supplierDataService, lookupDataService);
             _supplierViewModel.Load();
             DataContext = _supplierViewModel;

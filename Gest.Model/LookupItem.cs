@@ -9,13 +9,13 @@ namespace Gest.Model
     public class LookupItem
     {
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public string DisplayMember { get; set; }
     }
 
     public class NullLookupItem : LookupItem
     {
-        public new int? Id { get { return null; } }
+        public new Guid? Id { get { return null; } }
     }
 }

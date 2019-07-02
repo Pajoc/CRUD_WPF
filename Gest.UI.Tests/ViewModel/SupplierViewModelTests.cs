@@ -42,10 +42,15 @@ namespace Gest.UI.Tests.ViewModel
     {
         public IEnumerable<Employee> GetAll()
         {
-            yield return new Employee { Id = 1, Name = "Paulo Costa" };
-            yield return new Employee { Id = 2, Name = "Leonor Costa" };
-            yield return new Employee { Id = 3, Name = "Odete Costa" };
-            yield return new Employee { Id = 4, Name = "Mário Costa" };
+            var guid = new Guid();
+            var guid2 = new Guid();
+            var guid3 = new Guid();
+            var guid4 = new Guid();
+
+            yield return new Employee { Id = guid, Name = "Paulo Costa" };
+            yield return new Employee { Id = guid2, Name = "Leonor Costa" };
+            yield return new Employee { Id = guid3, Name = "Odete Costa" };
+            yield return new Employee { Id = guid4, Name = "Mário Costa" };
         }
 
     }
@@ -54,9 +59,12 @@ namespace Gest.UI.Tests.ViewModel
     {
         public IEnumerable<LookupItem> GetDepartmentLookupAsync()
         {
-            yield return new LookupItem { Id = 1, DisplayMember = "Catalog" };
-            yield return new LookupItem { Id = 2, DisplayMember = "Custom" };
-            yield return new LookupItem { Id = 3, DisplayMember = "Test" };
+            var guid = new Guid();
+            var guid2 = new Guid();
+            var guid3 = new Guid();
+            yield return new LookupItem { Id = guid, DisplayMember = "Catalog" };
+            yield return new LookupItem { Id = guid2, DisplayMember = "Custom" };
+            yield return new LookupItem { Id = guid3, DisplayMember = "Test" };
         }
     }
 }

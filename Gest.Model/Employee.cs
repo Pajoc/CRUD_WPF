@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gest.Model
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -19,7 +20,7 @@ namespace Gest.Model
 
         public bool? IsActive { get; set; }
 
-        public int? DepartmentId { get; set; }
+        public Guid? DepartmentId { get; set; }
 
         public Department DepartmentOfEmployee { get; set; }
     }

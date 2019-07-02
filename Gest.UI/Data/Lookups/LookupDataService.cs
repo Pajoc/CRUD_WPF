@@ -1,4 +1,6 @@
-﻿using Gest.Model;
+﻿using Gest.DataAccess;
+using Gest.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,11 +8,23 @@ namespace Gest.UI.Data.Lookups
 {
     public class LookupDataService : IDepartmentLookupDataService
     {
+        private IDataReaderAccess<Department> _dataAccess;
+
+        public LookupDataService(IDataReaderAccess<Department> dataAccess)
+        {
+            _dataAccess = dataAccess;
+        }
+
         public IEnumerable<LookupItem> GetDepartmentLookupAsync()
         {
-            yield return new LookupItem {  Id = 1, DisplayMember = "Accounting" };
-            yield return new LookupItem { Id = 2, DisplayMember = "IT" };
-            yield return new LookupItem { Id = 3, DisplayMember = "Production" };
+            
+            var res = _dataAccess.GetAll(new Department());
+
+            return res.Select(d => new LookupItem
+            {
+                Id = d.Id,
+                DisplayMember = d.Description
+            });
 
         }
     }

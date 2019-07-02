@@ -1,3 +1,11 @@
 ﻿Nice menu creation: https://www.wpf-tutorial.com/common-interface-controls/menu-control/
 
 Blue and REd :) -> https://www.youtube.com/watch?v=xUwk2-_tRzo
+
+
+Para projeto DataAccess como recebemos em json instalar o Newtonsoft.Json para fazer o deserialize
+
+Criar Interface IDataAccess (para abstrair de WebServiceDataAccess) e injetar no construtor de LookupDataService
+
+O LoockUp pretende ser leve e abstrato (Id, display member) Possui uma classe LookupDataService (na pasta Data do UI) e implementa diversas interfaces, 
+uma para cada lookUp
