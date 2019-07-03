@@ -24,10 +24,13 @@ namespace Gest.UI
 
         private void EmployeeViewClicked(object sender, RoutedEventArgs e)
         {
-            EmployeeDataService supplierDataService = new EmployeeDataService();
+            WebServiceDataAccess<Employee> wsDRA = new WebServiceDataAccess<Employee>();
+            EmployeeDataService employeeDataService = new EmployeeDataService(wsDRA);
+
             WebServiceDataAccess<Department> webServiceDataAccess = new WebServiceDataAccess<Department>();
-            LookupDataService lookupDataService = new LookupDataService(webServiceDataAccess);
-            _supplierViewModel = new EmployeeViewModel(supplierDataService, lookupDataService);
+
+            LookupDataService<Department> lookupDataService = new LookupDataService<Department>(webServiceDataAccess);
+            _supplierViewModel = new EmployeeViewModel(employeeDataService, lookupDataService);
             _supplierViewModel.Load();
             DataContext = _supplierViewModel;
         }

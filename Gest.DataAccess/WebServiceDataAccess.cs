@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -9,20 +10,19 @@ using System.Threading.Tasks;
 
 namespace Gest.DataAccess
 {
-    public class WebServiceDataAccess<TEntity> :IDataReaderAccess<TEntity>
-        where TEntity : class
+    public class WebServiceDataAccess<T> :IDataReaderAccess<T>
+        where T : class
     {
-        WebClient client = new WebClient();
-        string baseUri = "http://localhost:4070/api/";
+        WebClient _client = new WebClient() { Encoding = Encoding.UTF8 };
+        readonly string _baseUri = "http://localhost:4070/api/";
 
-        public IEnumerable<TEntity> GetAll(TEntity entity)
+        public IEnumerable<T> GetAll(T entity)
         {
-            baseUri += entity.GetType().Name.ToLower();
-            string result = client.DownloadString(baseUri);
-            var departments = JsonConvert.DeserializeObject <IEnumerable<TEntity>>(result);
-            return departments;
+            var Uri = _baseUri + entity.GetType().Name.ToLower();
+            string result = _client.DownloadString(Uri);
+            var returnedData = JsonConvert.DeserializeObject <IEnumerable<T>>(result);
+            return returnedData;
         }
 
-      
     }
 }

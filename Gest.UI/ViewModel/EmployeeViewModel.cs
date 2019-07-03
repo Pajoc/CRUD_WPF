@@ -10,17 +10,16 @@ namespace Gest.UI.ViewModel
 {
     public class EmployeeViewModel: ViewModelBase
     {
-        private IEmployeeDataService _supplierDataService;
-        private IDepartmentLookupDataService _supplierTypeLookupDataService;
+        private IEmployeeDataService _employeeDataService;
+        private IDepartmentLookupDataService _employeeTypeLookupDataService;
         private Employee _selectedEmployee;
 
-        public EmployeeViewModel(IEmployeeDataService supplierDataService, IDepartmentLookupDataService supplierTypeLookupDataService)
+        public EmployeeViewModel(IEmployeeDataService employeeDataService, IDepartmentLookupDataService employeeTypeLookupDataService)
         {
             Employees = new ObservableCollection<Employee>();
             Departments = new ObservableCollection<LookupItem>();
-            ShowSuppliersViewCommand = new DelegateCommand(OnClickSuppliers);
-            _supplierDataService = supplierDataService;
-            _supplierTypeLookupDataService = supplierTypeLookupDataService;
+            _employeeDataService = employeeDataService;
+            _employeeTypeLookupDataService = employeeTypeLookupDataService;
         }
 
 
@@ -31,13 +30,13 @@ namespace Gest.UI.ViewModel
 
         public void Load()
         {
-            var suppliers = _supplierDataService.GetAll();
+            var employees = _employeeDataService.GetAll();
 
             Employees.Clear();
 
-            foreach (var supplier in suppliers)
+            foreach (var employee in employees)
             {
-                Employees.Add(supplier);
+                Employees.Add(employee);
             }
 
             LoadDepartmentLookup();
@@ -47,7 +46,7 @@ namespace Gest.UI.ViewModel
         {
             Departments.Clear();
             Departments.Add(new NullLookupItem { DisplayMember = " - " });
-            var lookup =  _supplierTypeLookupDataService.GetDepartmentLookupAsync();
+            var lookup =  _employeeTypeLookupDataService.GetDepartmentLookupAsync();
             foreach (var lookupItem in lookup)
             {
                 Departments.Add(lookupItem);
@@ -56,8 +55,6 @@ namespace Gest.UI.ViewModel
 
         public ObservableCollection<Employee> Employees { get; set; }
         public ObservableCollection<LookupItem> Departments { get; }
-
-        public ICommand ShowSuppliersViewCommand { get; }
 
 
         public Employee SelectedEmployee
