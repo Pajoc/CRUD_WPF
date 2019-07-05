@@ -1,6 +1,7 @@
 ﻿using Gest.Model;
 using Gest.UI.Data;
 using Gest.UI.Data.Lookups;
+using Gest.UI.View.Services;
 using Gest.UI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace Gest.UI.Tests.ViewModel
         {
             var mockSup = new SupplierDataProviderMock();
             var mackSupType = new SupplierLoockupMock();
-            _supplierViewModel = new EmployeeViewModel(mockSup, mackSupType);
+            var dialogMock = new DialogMock();
+            _supplierViewModel = new EmployeeViewModel(mockSup, mackSupType, dialogMock);
         }
         [Fact]
         public void ShouldLoadSuppliersView()
@@ -65,6 +67,20 @@ namespace Gest.UI.Tests.ViewModel
             yield return new LookupItem { Id = guid, DisplayMember = "Catalog" };
             yield return new LookupItem { Id = guid2, DisplayMember = "Custom" };
             yield return new LookupItem { Id = guid3, DisplayMember = "Test" };
+        }
+    }
+
+
+    public class DialogMock : IMessageDialogService
+    {
+        public Task ShowInfoDialogAsync(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<MessageDialogResult> ShowOkCancelDialogAsync(string text, string title)
+        {
+            throw new NotImplementedException();
         }
     }
 }

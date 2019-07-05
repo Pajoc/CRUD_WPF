@@ -2,6 +2,7 @@
 using Gest.Model;
 using Gest.UI.Data;
 using Gest.UI.Data.Lookups;
+using Gest.UI.View.Services;
 using Gest.UI.ViewModel;
 using MahApps.Metro.Controls;
 using System;
@@ -24,13 +25,17 @@ namespace Gest.UI
 
         private void EmployeeViewClicked(object sender, RoutedEventArgs e)
         {
+
+            //builder.RegisterType<MessageDialogService>().As<IMessageDialogService>();
+            MessageDialogService dialog = new MessageDialogService();
+
             WebServiceDataAccess<Employee> wsDRA = new WebServiceDataAccess<Employee>();
             EmployeeDataService employeeDataService = new EmployeeDataService(wsDRA);
 
             WebServiceDataAccess<Department> webServiceDataAccess = new WebServiceDataAccess<Department>();
 
             LookupDataService<Department> lookupDataService = new LookupDataService<Department>(webServiceDataAccess);
-            _supplierViewModel = new EmployeeViewModel(employeeDataService, lookupDataService);
+            _supplierViewModel = new EmployeeViewModel(employeeDataService, lookupDataService, dialog);
             _supplierViewModel.Load();
             DataContext = _supplierViewModel;
         }

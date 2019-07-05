@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Gest.Model;
+﻿using System;
 
 namespace Gest.DataAccess
 {

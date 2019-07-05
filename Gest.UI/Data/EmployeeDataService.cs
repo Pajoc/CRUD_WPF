@@ -18,5 +18,10 @@ namespace Gest.UI.Data
         {
             return _employeeDA.GetAll(new Employee());
         }
+
+        public bool RemoveEmployee(Guid id)
+        {
+            return _employeeDA.Remove(new Employee(), id);
+        }
     }
 }

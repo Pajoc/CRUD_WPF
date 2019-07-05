@@ -10,5 +10,6 @@ namespace Gest.DataAccess
     public interface IDataReaderAccess<T>
     {
         IEnumerable<T> GetAll(T entity);
+        bool Remove(T entity, Guid guid);
     }
 }

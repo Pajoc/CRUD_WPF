@@ -24,5 +24,13 @@ namespace Gest.DataAccess
             return returnedData;
         }
 
+        public bool Remove(T entity,Guid guid)
+        {
+            var uri = _baseUri + entity.GetType().Name.ToLower()+"/"+ guid;
+            byte[] dataBytes2 = Encoding.UTF8.GetBytes("");
+            byte[] responseBytes = _client.UploadData(new Uri(uri), "DELETE", dataBytes2);
+            return true;
+        }
+
     }
 }

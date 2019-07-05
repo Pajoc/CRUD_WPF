@@ -9,3 +9,6 @@ Criar Interface IDataAccess (para abstrair de WebServiceDataAccess) e injetar no
 
 O LoockUp pretende ser leve e abstrato (Id, display member) Possui uma classe LookupDataService (na pasta Data do UI) e implementa diversas interfaces, 
 uma para cada lookUp
+
+
+Para gerir as mensagens criar classe MessageDialogService na view pasta services
