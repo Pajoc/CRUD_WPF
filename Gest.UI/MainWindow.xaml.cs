@@ -44,5 +44,14 @@ namespace Gest.UI
         {
             DataContext = new BlueViewModel();
         }
+
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (frmMainFrame.CanGoBack)
+            {
+                frmMainFrame.GoBack();
+            }
+        }
     }
 }
