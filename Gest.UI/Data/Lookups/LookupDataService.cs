@@ -3,6 +3,7 @@ using Gest.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Gest.UI.Data.Lookups
 {
@@ -16,9 +17,9 @@ namespace Gest.UI.Data.Lookups
             _dataAccess = dataAccess;
         }
 
-        public IEnumerable<LookupItem> GetDepartmentLookupAsync()
+        public async Task<IEnumerable<LookupItem>> GetDepartmentLookupAsync()
         {
-            var res = (List<Department>) _dataAccess.GetAll(new T());
+            var res = (List<Department>) await _dataAccess.GetAllAsync(new T());
             return res.Select(d => new LookupItem
             {
                 Id = d.Id,

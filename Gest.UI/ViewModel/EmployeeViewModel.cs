@@ -1,8 +1,10 @@
 ﻿using Gest.Model;
 using Gest.UI.Data;
 using Gest.UI.Data.Lookups;
+using Gest.UI.Event;
 using Gest.UI.View.Services;
 using Prism.Commands;
+using Prism.Events;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -18,11 +20,13 @@ namespace Gest.UI.ViewModel
         private Employee _selectedEmployee;
         protected readonly IMessageDialogService MessageDialogService;
 
-        public EmployeeViewModel(IEmployeeDataService employeeDataService, IDepartmentLookupDataService employeeTypeLookupDataService, IMessageDialogService messageDialogService)
+        public EmployeeViewModel(IEmployeeDataService employeeDataService,
+            IDepartmentLookupDataService employeeTypeLookupDataService, IMessageDialogService messageDialogService)
         {
             MessageDialogService = messageDialogService;
             Employees = new ObservableCollection<Employee>();
             Departments = new ObservableCollection<LookupItem>();
+
             _employeeDataService = employeeDataService;
             _employeeTypeLookupDataService = employeeTypeLookupDataService;
 
@@ -36,19 +40,20 @@ namespace Gest.UI.ViewModel
                 var result = await MessageDialogService.ShowOkCancelDialogAsync($"Do you really want to delete this supplier {_selectedEmployee.Name}?", "Question");
                 if (result == MessageDialogResult.OK)
                 {
-                    _employeeDataService.RemoveEmployee(_selectedEmployee.Id);
+                    await _employeeDataService.RemoveEmployeeAsync(_selectedEmployee.Id);
+                    await LoadAsync();
                 }
             }
         }
 
-        private void OnClickSuppliers()
+        private async Task OnClickSuppliersAsync()
         {
-            Load();
+            await LoadAsync();
         }
 
-        public void Load()
+        public async Task LoadAsync()
         {
-            var employees = _employeeDataService.GetAll();
+            var employees = await _employeeDataService.GetAllAsync();
 
             Employees.Clear();
 
@@ -57,14 +62,14 @@ namespace Gest.UI.ViewModel
                 Employees.Add(employee);
             }
 
-            LoadDepartmentLookup();
+            await LoadDepartmentLookupAsync();
         }
 
-        private void LoadDepartmentLookup()
+        private async Task LoadDepartmentLookupAsync()
         {
             Departments.Clear();
             Departments.Add(new NullLookupItem { DisplayMember = " - " });
-            var lookup = _employeeTypeLookupDataService.GetDepartmentLookupAsync();
+            var lookup = await _employeeTypeLookupDataService.GetDepartmentLookupAsync();
             foreach (var lookupItem in lookup)
             {
                 Departments.Add(lookupItem);

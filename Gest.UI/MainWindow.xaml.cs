@@ -23,7 +23,7 @@ namespace Gest.UI
             InitializeComponent();
         }
 
-        private void EmployeeViewClicked(object sender, RoutedEventArgs e)
+        private async void EmployeeViewClickedAsync(object sender, RoutedEventArgs e)
         {
 
             //builder.RegisterType<MessageDialogService>().As<IMessageDialogService>();
@@ -36,7 +36,7 @@ namespace Gest.UI
 
             LookupDataService<Department> lookupDataService = new LookupDataService<Department>(webServiceDataAccess);
             _supplierViewModel = new EmployeeViewModel(employeeDataService, lookupDataService, dialog);
-            _supplierViewModel.Load();
+            await _supplierViewModel.LoadAsync();
             DataContext = _supplierViewModel;
         }
 
@@ -46,7 +46,7 @@ namespace Gest.UI
         }
 
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             if (frmMainFrame.CanGoBack)
             {

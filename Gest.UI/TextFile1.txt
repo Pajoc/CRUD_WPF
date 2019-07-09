@@ -13,6 +13,8 @@ uma para cada lookUp
 
 Para gerir as mensagens criar classe MessageDialogService na view pasta services
 
+Gerir eventos com prism (subscribe e publish)
+
 
 exemplo para acesso ao webservice
 https://stackoverflow.com/questions/30162373/how-to-send-http-delete-request-via-c-sharp-webclient/30185606

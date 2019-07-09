@@ -26,15 +26,15 @@ namespace Gest.UI.Tests.ViewModel
         [Fact]
         public void ShouldLoadSuppliersView()
         {
-            _supplierViewModel.Load();
+            _supplierViewModel.LoadAsync();
             Assert.Equal(4, _supplierViewModel.Employees.Count());
         }
 
         [Fact]
         public void ShoulLoadSuppliersOnlyOnce()
         {
-            _supplierViewModel.Load();
-            _supplierViewModel.Load();
+            _supplierViewModel.LoadAsync();
+            _supplierViewModel.LoadAsync();
             Assert.Equal(4, _supplierViewModel.Employees.Count());
         }
     }
@@ -42,31 +42,40 @@ namespace Gest.UI.Tests.ViewModel
 
     public class SupplierDataProviderMock : IEmployeeDataService
     {
-        public IEnumerable<Employee> GetAll()
+        public async Task<IEnumerable<Employee>> GetAllAsync()
         {
-            var guid = new Guid();
-            var guid2 = new Guid();
-            var guid3 = new Guid();
-            var guid4 = new Guid();
 
-            yield return new Employee { Id = guid, Name = "Paulo Costa" };
-            yield return new Employee { Id = guid2, Name = "Leonor Costa" };
-            yield return new Employee { Id = guid3, Name = "Odete Costa" };
-            yield return new Employee { Id = guid4, Name = "Mário Costa" };
+            var it1 = new Employee { Id = new Guid(), Name = "Paulo Costa" };
+            var it2 = new Employee { Id = new Guid(), Name = "Leonor Costa" };
+            var it3 = new Employee { Id = new Guid(), Name = "Odete Costa" };
+            var list = new List<Employee>();
+            list.Add(it1);
+            list.Add(it2);
+            list.Add(it3);
+            return list;
         }
 
+        public Task<bool> RemoveEmployeeAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class SupplierLoockupMock : IDepartmentLookupDataService
     {
-        public IEnumerable<LookupItem> GetDepartmentLookupAsync()
+        public async Task<IEnumerable<LookupItem>> GetDepartmentLookupAsync()
         {
-            var guid = new Guid();
-            var guid2 = new Guid();
-            var guid3 = new Guid();
-            yield return new LookupItem { Id = guid, DisplayMember = "Catalog" };
-            yield return new LookupItem { Id = guid2, DisplayMember = "Custom" };
-            yield return new LookupItem { Id = guid3, DisplayMember = "Test" };
+           
+            var it1 = new LookupItem { Id = new Guid(), DisplayMember = "Catalog" };
+            var it2 = new LookupItem { Id = new Guid(), DisplayMember = "Custom" };
+            var it3 = new LookupItem { Id = new Guid(), DisplayMember = "Test" };
+            var list = new List<LookupItem>();
+            list.Add(it1);
+            list.Add(it2);
+            list.Add(it3);
+
+            
+            return list;
         }
     }
 

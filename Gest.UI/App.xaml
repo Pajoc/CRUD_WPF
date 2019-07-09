@@ -22,7 +22,7 @@
                         <Setter Property="Foreground" Value="DarkGray"/>
                         <Setter Property="FontSize" Value="18"/>
                     </Style>
-
+                    
                     <Style TargetType="DataGrid" BasedOn="{StaticResource {x:Type DataGrid}}">
                         <Setter Property="FontSize" Value="16"/>
                     </Style>

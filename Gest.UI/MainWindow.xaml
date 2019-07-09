@@ -30,6 +30,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        
         <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD" />
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070" />
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD" />
@@ -104,84 +106,82 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
 
-        <Menu Grid.ColumnSpan="5" FontSize="18" Background="#FFDEE6EA">
-            <StackPanel Margin="0"
+
+        <Menu Grid.ColumnSpan="5" FontSize="18"  >
+            <Grid >
+                <StackPanel Margin="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
-                        Orientation="Horizontal"
-                       Background="#FFDEE6EA"
-                        
-                       >
-                <Button x:Name="btnBack"
+                        Orientation="Horizontal">
+                    <Button x:Name="btnBack" Background="White"
                         Width="50"
-                        Background="#FFDEE6EA"
+                        
                         BorderThickness="0"
-                        Click="btnBack_Click"
+                        Click="BtnBack_Click"
                         Style="{DynamicResource NavigationButtonStyle}">
-                    <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-                        <Grid>
-                            <Grid Width="48"
+                        <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                            <Grid>
+                                <Grid Width="48"
                                   Height="48"
                                   Visibility="Visible">
-                                <Path Name="Stroke"
+                                    <Path Name="Stroke"
                                       Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z"
-                                      Fill="#FFFFFFFF"
+                                      Fill="#41B1E1"
                                       Stretch="Fill"
                                       Visibility="Visible" />
-                            </Grid>
-                            <Path Width="26"
+                                </Grid>
+                                <Path Width="26"
                                   Height="26"
                                   Margin="0,0,0,0"
                                   Data="F1M-800.86,-1379.55L-781.99,-1360.68 -782.125,-1360.54 -792.356,-1360.54 -809.825,-1378.01 -815.075,-1383.26 -792.494,-1405.84 -781.99,-1405.84 -800.86,-1386.97 -751.074,-1386.97 -751.074,-1379.55 -800.86,-1379.55z"
-                                  Fill="#FFFFFFFF"
+                                  Fill="#41B1E1"
                                   RenderTransformOrigin="0.5,0.5"
                                   Stretch="Uniform">
-                                <Path.RenderTransform>
-                                    <TransformGroup>
-                                        <TransformGroup.Children>
-                                            <RotateTransform Angle="0" />
-                                            <ScaleTransform ScaleX="1" ScaleY="1" />
-                                        </TransformGroup.Children>
-                                    </TransformGroup>
-                                </Path.RenderTransform>
-                            </Path>
-                        </Grid>
-                    </Viewbox>
-                </Button>
-                <Label Content="abc"></Label>
-            </StackPanel>
-            
-            <MenuItem Header="Files" Background="#FFDEE6EA" >
-                                    <!--Command="{Binding OnClickSuppliers}"-->
-                    <MenuItem Header="Suppliers" Click="EmployeeViewClicked"/>
-                    <MenuItem Header="Suppliers Types" Click="BlueViewClicked"/>
-                </MenuItem>
-            <MenuItem Header="Manage" Background="#FFDEE6EA">
-                    <MenuItem Header="Invoices" Command="{Binding OpenSingleDetailViewCommand}"
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <TransformGroup.Children>
+                                                <RotateTransform Angle="0" />
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </TransformGroup.Children>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Grid>
+                        </Viewbox>
+                    </Button>
+                    
+                </StackPanel>
+            </Grid>
+            <MenuItem Header="Files"  Width="50" Margin="0 5 0 0">
+                <!--Command="{Binding OnClickSuppliers}"-->
+                <MenuItem Header="Suppliers" Click="EmployeeViewClickedAsync"/>
+                <MenuItem Header="Suppliers Types" Click="BlueViewClicked"/>
+            </MenuItem>
+            <MenuItem Header="Manage" Margin="0 5 0 0">
+                <MenuItem Header="Invoices" Command="{Binding OpenSingleDetailViewCommand}"
                               />
-                </MenuItem>
-            </Menu>
-       
+            </MenuItem>
+        </Menu>
+
         <DockPanel Background="Gray" Grid.Row="1" Grid.RowSpan="5">
             <StackPanel>
                 <Button  Visibility="Collapsed"/>
                 <Button Content="Expenses" Click="BlueViewClicked" Margin="2 4 4 4"/>
-                <Button Content="Employees" Click="EmployeeViewClicked" Margin="2 0 4 4"/>
-                
-                
+                <Button Content="Employees" Click="EmployeeViewClickedAsync" Margin="2 0 4 4"/>
+
+
             </StackPanel>
         </DockPanel>
         <Frame x:Name="frmMainFrame"
                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5"
                NavigationUIVisibility="Hidden" Content="{Binding}">
-            <Frame.Background>
+            <!--<Frame.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Offset="0" Color="#FFDEE6EA" />
                     <GradientStop Offset="1" Color="#FFFCFCFD" />
                 </LinearGradientBrush>
-            </Frame.Background>
+            </Frame.Background>-->
 
         </Frame>
         <!--<ContentControl x:Name="frmMainFrame" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}"/>-->

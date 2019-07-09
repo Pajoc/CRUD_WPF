@@ -1,27 +1,28 @@
 ﻿using Gest.DataAccess;
 using Gest.Model;
 using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace Gest.UI.Data
 {
     public class EmployeeDataService : IEmployeeDataService
     {
-        private IDataReaderAccess<Employee> _employeeDA;
+        private IDataAccess<Employee> _employeeDA;
 
-        public EmployeeDataService(IDataReaderAccess<Employee> employeeDA)
+        public EmployeeDataService(IDataAccess<Employee> employeeDA)
         {
             _employeeDA = employeeDA;
         }
 
-        public IEnumerable<Employee> GetAll()
+        public async Task<IEnumerable<Employee>> GetAllAsync()
         {
-            return _employeeDA.GetAll(new Employee());
+            return await _employeeDA.GetAllAsync(new Employee());
         }
 
-        public bool RemoveEmployee(Guid id)
+        public async Task<bool> RemoveEmployeeAsync(Guid id)
         {
-            return _employeeDA.Remove(new Employee(), id);
+            return await _employeeDA.RemoveAsync(new Employee(), id);
         }
     }
 }

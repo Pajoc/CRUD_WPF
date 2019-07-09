@@ -73,6 +73,7 @@
     <Compile Include="Data\Lookups\IDepartmentLookupDataService.cs" />
     <Compile Include="Data\Lookups\LookupDataService.cs" />
     <Compile Include="Data\EmployeeDataService.cs" />
+    <Compile Include="Event\AfterDetailDeletedEvent.cs" />
     <Compile Include="ViewModel\BlueViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
